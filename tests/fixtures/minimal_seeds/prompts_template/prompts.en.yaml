@@ -1,0 +1,2 @@
+scenario_based: >
+  Write a very short story. Context: {context}. The main character is {character}.

@@ -50,7 +50,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--dataset-repo",
         type=Path,
-        default=Path(__file__).resolve().parents[1] / "StereoTales",
+        default=Path(__file__).resolve().parents[2] / "StereoTales",
         help="Path to cloned StereoTales dataset repository.",
     )
     parser.add_argument(
@@ -173,7 +173,6 @@ def build_rows(file_path: Path) -> list[tuple[str, dict[str, Any]]]:
             "user_prompt": user_prompt,
             "story": story,
             "extraction_score": score,
-            # Keep attributes compact and schema-stable for parquet export.
             "extracted_attributes_json": json.dumps(attrs, ensure_ascii=False),
         }
         rows.append((bucket, row))
@@ -250,7 +249,6 @@ def main() -> int:
             LOGGER.info("  %s: %d rows", bucket, len(grouped_rows[bucket]))
         return 0
 
-    # Remove prior eval shards so the bucket contains exactly this export.
     for bucket in grouped_rows:
         out_dir = args.dataset_repo / bucket / STORIES_SUBDIR
         if out_dir.is_dir():

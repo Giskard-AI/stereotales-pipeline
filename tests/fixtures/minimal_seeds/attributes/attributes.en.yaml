@@ -1,0 +1,7 @@
+# Minimal fixture: only `age` is populated so scenario-based generation yields one sample
+# (one value × one scenario) when other BASE_ATTRIBUTES keys are absent.
+age:
+  values:
+    - "adult (30-44)"
+  template_choices:
+    - "an adult (30-44)"

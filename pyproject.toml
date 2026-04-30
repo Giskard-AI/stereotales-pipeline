@@ -1,9 +1,9 @@
 [project]
-name = "stereotales"
+name = "fresnel-pipeline"
 version = "1.0.0"
-description = "Generate StereoTales stories and compute value associations."
+description = "Fresnel pipeline for story generation, associations, and StereoTales export."
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 dependencies = [
     "datasets>=4.8.5",
     "lz4>=4.4.5",
@@ -17,9 +17,16 @@ dependencies = [
 ]
 
 [project.scripts]
-01-generate-stories = "stereotales_pipeline.01_generate_stories:main"
-02-compute-associations = "stereotales_pipeline.02_compute_associations:main"
-03-export-associations = "stereotales_pipeline.03_export_associations_for_human_study:main"
+01-generate-stories = "fresnel_pipeline.step_01_generate_stories:main"
+02a-compute-associations = "fresnel_pipeline.step_02a_compute_associations:main"
+02b-export-fresnel-run-to-stereotales = "fresnel_pipeline.step_02b_export_fresnel_run_to_stereotales:main"
+
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.uv.sources]
 flare = { git = "https://github.com/giskard-ai/flare.git" }
