@@ -1,0 +1,25 @@
+[project]
+name = "stereotales"
+version = "1.0.0"
+description = "Generate StereoTales stories and compute value associations."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "datasets>=4.8.5",
+    "lz4>=4.4.5",
+    "numpy>=2.0.0",
+    "pandas>=2.2.0",
+    "pydantic>=2.0.0",
+    "pyarrow>=22.0.0",
+    "pyyaml>=6.0",
+    "scipy>=1.14.0",
+    "flare",
+]
+
+[project.scripts]
+01-generate-stories = "stereotales_pipeline.01_generate_stories:main"
+02-compute-associations = "stereotales_pipeline.02_compute_associations:main"
+03-export-associations = "stereotales_pipeline.03_export_associations_for_human_study:main"
+
+[tool.uv.sources]
+flare = { git = "https://github.com/giskard-ai/flare.git" }
