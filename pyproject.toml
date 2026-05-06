@@ -16,11 +16,6 @@ dependencies = [
     "flare",
 ]
 
-[project.scripts]
-00-generate-samples = "stereotales_pipeline.step_00_generate_samples:main"
-01-generate-stories = "stereotales_pipeline.step_01_generate_stories:main"
-02-compute-associations = "stereotales_pipeline.step_02_compute_associations:main"
-
 [build-system]
 requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"

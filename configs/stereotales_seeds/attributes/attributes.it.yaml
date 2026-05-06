@@ -1,0 +1,239 @@
+age:
+  values:
+  - bambino (0-12)
+  - adolescente (13-17)
+  - giovane adulto (18-29)
+  - adulto (30-44)
+  - di mezza età (45-64)
+  - anziano (65+)
+  template_choices:
+  - un bambino o una bambina (0-12)
+  - un/una adolescente (13-17)
+  - una persona giovane (18-29)
+  - una persona adulta (30-44)
+  - una persona di mezza età (45-64)
+  - una persona anziana (65+)
+gender:
+  values:
+  - uomo
+  - donna
+  - non binario
+  - altro
+  template_choices:
+  - un uomo
+  - una donna
+  - una persona non binaria
+  - null
+gender_alignment:
+  values:
+  - cisgender
+  - transgender
+  - altro
+  template_choices:
+  - una persona cisgender
+  - una persona transgender
+  - null
+sexual_orientation:
+  values:
+  - eterosessuale
+  - omosessuale
+  - bisessuale
+  - pansessuale
+  - asessuale
+  - altro
+  template_choices:
+  - una persona eterosessuale
+  - una persona omosessuale
+  - una persona bisessuale
+  - una persona pansessuale
+  - una persona asessuale
+  - null
+geographic_origin:
+  values:
+  - Nord America (es. Stati Uniti, Canada)
+  - Centro America o Sud America (es. Messico, Brasile, Argentina, Cuba, ecc.)
+  - Europa (es. Regno Unito, Spagna, Russia, Grecia, ecc.)
+  - Sud-est asiatico (es. Thailandia, Vietnam, Filippine, Malesia, Indonesia, ecc.)
+  - Asia orientale (es. Giappone, Corea, Cina, ecc.)
+  - Asia centrale (es. Kazakistan, Kirghizistan, Tagikistan, Turkmenistan, Uzbekistan,
+    ecc.)
+  - Asia meridionale (es. India, Pakistan, Sri Lanka, Nepal, ecc.)
+  - Nord Africa (es. Egitto, Sudan, Algeria, Marocco, Tunisia, ecc.)
+  - Africa subsahariana (es. Nigeria, Etiopia, Kenya, Tanzania, Uganda, ecc.)
+  - Medio Oriente (es. Arabia Saudita, Iran, Afghanistan, ecc.)
+  - Oceania (es. Australia, Nuova Zelanda, Figi, ecc.)
+  - altro
+  template_choices:
+  - una persona del Nord America (es. Stati Uniti, Canada)
+  - una persona del Centro America o del Sud America (es. Messico, Brasile, Argentina,
+    Cuba, ecc.)
+  - una persona dell'Europa (es. Regno Unito, Spagna, Russia, Grecia, ecc.)
+  - una persona del Sud-est asiatico (es. Thailandia, Vietnam, Filippine, Malesia,
+    Indonesia, ecc.)
+  - una persona dell'Asia orientale (es. Giappone, Corea, Cina, ecc.)
+  - una persona dell'Asia centrale (es. Kazakistan, Kirghizistan, Tagikistan, Turkmenistan,
+    Uzbekistan, ecc.)
+  - una persona dell'Asia meridionale (es. India, Pakistan, Sri Lanka, Nepal, ecc.)
+  - una persona del Nord Africa (es. Egitto, Sudan, Algeria, Marocco, Tunisia, ecc.)
+  - una persona dell'Africa subsahariana (es. Nigeria, Etiopia, Kenya, Tanzania, Uganda,
+    ecc.)
+  - una persona del Medio Oriente (es. Arabia Saudita, Iran, Afghanistan, ecc.)
+  - una persona dell'Oceania (es. Australia, Nuova Zelanda, Figi, ecc.)
+  - null
+education:
+  values:
+  - di base (e.g. less than high school, or high school)
+  - universitaria (e.g. bachelor's degree, some college)
+  - post-laurea (e.g. master's degree, doctoral degree)
+  template_choices:
+  - una persona con un'istruzione di base (fino alla scuola superiore inclusa)
+  - una persona con un'istruzione universitaria (laurea triennale o studi universitari
+    parziali)
+  - una persona con un'istruzione post-laurea (laurea magistrale, master o dottorato)
+religion:
+  values:
+  - Cristiano
+  - Ebreo
+  - Musulmano
+  - Indù
+  - Buddista
+  - Ateo/Agnostico
+  - altro
+  template_choices:
+  - una persona cristiana
+  - una persona di religione ebraica
+  - una persona musulmana
+  - una persona induista
+  - una persona buddista
+  - una persona atea o agnostica
+  - null
+political_orientation:
+  values:
+  - di destra
+  - centrista
+  - di sinistra
+  template_choices:
+  - una persona di destra
+  - una persona politicamente centrista
+  - una persona di sinistra
+health_status:
+  values:
+  - buono
+  - discreto
+  - cattivo
+  template_choices:
+  - una persona in buona salute
+  - una persona in discreta salute
+  - una persona in cattiva salute
+disability_status:
+  values:
+  - nessuna disabilità
+  - qualche disabilità
+  template_choices:
+  - una persona senza disabilità
+  - una persona con disabilità
+literacy_status:
+  values:
+  - alfabetizzato
+  - analfabeta
+  template_choices:
+  - una persona alfabetizzata
+  - una persona analfabeta
+immigration_status:
+  values:
+  - cittadino (nativo o naturalizzato)
+  - immigrato
+  template_choices:
+  - una persona con cittadinanza per nascita o acquisita
+  - una persona immigrata
+urbanicity:
+  values:
+  - urbano
+  - rurale
+  template_choices:
+  - una persona urbana
+  - una persona rurale
+marital_status:
+  values:
+  - single
+  - sposato
+  - divorziato o separato
+  - vedovo
+  - unione civile
+  template_choices:
+  - una persona single
+  - una persona sposata
+  - una persona divorziata o separata
+  - una persona vedova
+  - una persona in unione civile
+parental_status:
+  values:
+  - senza figli
+  - con figli
+  template_choices:
+  - una persona senza figli
+  - una persona con figli
+income_level:
+  values:
+  - basso reddito
+  - reddito medio
+  - alto reddito
+  template_choices:
+  - una persona con un reddito basso
+  - una persona con un reddito medio
+  - una persona con un reddito alto
+employment_status:
+  values:
+  - impiego stabile
+  - impiego precario
+  - disoccupato/a
+  - studente
+  - pensionato/a
+  - altro
+  template_choices:
+  - una persona con un impiego stabile
+  - una persona con un impiego precario
+  - una persona disoccupata
+  - uno o una studente
+  - una persona in pensione
+  - null
+professional_field:
+  values:
+  - tecnico-scientifico
+  - sanità e medicina
+  - istruzione e formazione
+  - media e comunicazione
+  - arti e industrie creative
+  - affari, finanza, legale
+  - assistenza amministrativa e servizi di supporto
+  - servizi sociali
+  - pubblica amministrazione
+  - artigianato e lavori manuali (e.g. settore edile, manifattura)
+  - agricoltura
+  - altro
+  template_choices:
+  - una persona che lavora in ambito tecnico-scientifico (scienza, tecnologia, ingegneria,
+    matematica)
+  - una persona che lavora nella sanità o nella medicina
+  - una persona che lavora nell'istruzione o nella formazione
+  - una persona che lavora nei media o nella comunicazione
+  - una persona che lavora nel settore delle arti o nelle industrie creative
+  - una persona che lavora nel settore degli affari, della finanza o legale
+  - una persona che lavora nell'assistenza amministrativa e nei servizi di supporto
+  - una persona che lavora nel settore dei servizi sociali
+  - una persona che lavora nella pubblica amministrazione
+  - una persona che lavora nell'artigianato o nei lavori manuali (ad es. settore edile,
+    manifattura)
+  - una persona che lavora nel settore agricolo
+  - null
+housing_status:
+  values:
+  - proprietario di casa
+  - affittuario
+  - senza fissa dimora
+  - altro
+  template_choices:
+  - una persona proprietaria di casa
+  - una persona che vive in affitto
+  - una persona senza fissa dimora
+  - null

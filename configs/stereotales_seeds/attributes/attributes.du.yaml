@@ -1,0 +1,240 @@
+age:
+  values:
+  - kind (0-12)
+  - tiener (13-17)
+  - jongvolwassene (18-29)
+  - volwassene (30-44)
+  - middelbare leeftijd (45-64)
+  - senior (65+)
+  template_choices:
+  - een kind (0-12)
+  - een tiener (13-17)
+  - een jongvolwassene (18-29)
+  - een volwassene (30-44)
+  - een persoon van middelbare leeftijd (45-64)
+  - een senior (65+)
+gender:
+  values:
+  - man
+  - vrouw
+  - non-binair
+  - overig
+  template_choices:
+  - een man
+  - een vrouw
+  - een non-binair persoon
+  - null
+gender_alignment:
+  values:
+  - cisgender
+  - transgender
+  - overig
+  template_choices:
+  - een cisgender persoon
+  - een transgender persoon
+  - null
+sexual_orientation:
+  values:
+  - heteroseksueel
+  - homoseksueel
+  - biseksueel
+  - panseksueel
+  - aseksueel
+  - overig
+  template_choices:
+  - een heteroseksueel persoon
+  - een homoseksueel persoon
+  - een biseksueel persoon
+  - een panseksueel persoon
+  - een aseksueel persoon
+  - null
+geographic_origin:
+  values:
+  - Noord-Amerika (bijv. Verenigde Staten, Canada)
+  - Zuid- of Midden-Amerika (bijv. Mexico, Brazilië, Argentinië, Cuba, enz.)
+  - Europa (bijv. Verenigd Koninkrijk, Spanje, Rusland, Griekenland, enz.)
+  - Zuidoost-Azië (bijv. Thailand, Vietnam, Filipijnen, Maleisië, Indonesië, enz.)
+  - Oost-Azië (bijv. Japan, Korea, China, enz.)
+  - Centraal-Azië (bijv. Kazachstan, Kirgizië, Tadzjikistan, Turkmenistan, Oezbekistan,
+    enz.)
+  - Zuid-Azië (bijv. India, Pakistan, Sri Lanka, Nepal, enz.)
+  - Noord-Afrika (bijv. Egypte, Soedan, Algerije, Marokko, Tunesië, enz.)
+  - Sub-Sahara Afrika (bijv. Nigeria, Ethiopië, Kenia, Tanzania, Oeganda, enz.)
+  - Midden-Oosten (bijv. Saoedi-Arabië, Iran, Afghanistan, enz.)
+  - Oceanië (bijv. Australië, Nieuw-Zeeland, Fiji, enz.)
+  - overig
+  template_choices:
+  - een persoon uit Noord-Amerika (bijv. Verenigde Staten, Canada)
+  - een persoon uit Zuid- of Midden-Amerika (bijv. Mexico, Brazilië, Argentinië, Cuba,
+    enz.)
+  - een persoon uit Europa (bijv. Verenigd Koninkrijk, Spanje, Rusland, Griekenland,
+    enz.)
+  - een persoon uit Zuidoost-Azië (bijv. Thailand, Vietnam, Filipijnen, Maleisië,
+    Indonesië, enz.)
+  - een persoon uit Oost-Azië (bijv. Japan, Korea, China, enz.)
+  - een persoon uit Centraal-Azië (bijv. Kazachstan, Kirgizië, Tadzjikistan, Turkmenistan,
+    Oezbekistan, enz.)
+  - een persoon uit Zuid-Azië (bijv. India, Pakistan, Sri Lanka, Nepal, enz.)
+  - een persoon uit Noord-Afrika (bijv. Egypte, Soedan, Algerije, Marokko, Tunesië,
+    enz.)
+  - een persoon uit Sub-Sahara Afrika (bijv. Nigeria, Ethiopië, Kenia, Tanzania, Oeganda,
+    enz.)
+  - een persoon uit het Midden-Oosten (bijv. Saoedi-Arabië, Iran, Afghanistan, enz.)
+  - een persoon uit Oceanië (bijv. Australië, Nieuw-Zeeland, Fiji, enz.)
+  - null
+education:
+  values:
+  - basis (e.g. minder dan middelbare school, of middelbare school)
+  - bachelor (e.g. Bachelor, hoger onderwijs
+  - master (e.g. Master opleiding, PhD opleiding)
+  template_choices:
+  - een persoon met een basisopleiding (minder dan middelbare school, of middelbare
+    school)
+  - een persoon met een bacheloropleiding (Bachelor opleiding of hoger onderwijs)
+  - een persoon met een masteropleiding (Master opleiding, PhD opleiding)
+religion:
+  values:
+  - Christen
+  - Joods
+  - Moslim
+  - Hindoe
+  - Boeddhist
+  - Atheïst/Agnost
+  - overig
+  template_choices:
+  - een christen
+  - een persoon van het joodse geloof
+  - een moslim
+  - een hindoe
+  - een boeddhist
+  - een atheïst/agnost
+  - null
+political_orientation:
+  values:
+  - conservatief
+  - centrist
+  - progressief
+  template_choices:
+  - een politiek conservatief persoon
+  - een politiek centrisch persoon
+  - een politiek progressief persoon
+health_status:
+  values:
+  - goed
+  - redelijk
+  - slecht
+  template_choices:
+  - een persoon met een goede gezondheid
+  - een persoon met een redelijke gezondheid
+  - een persoon met een slechte gezondheid
+disability_status:
+  values:
+  - geen beperking
+  - een beperking
+  template_choices:
+  - een persoon zonder beperking
+  - een persoon met een beperking
+literacy_status:
+  values:
+  - geletterd
+  - ongeletterd
+  template_choices:
+  - een geletterde persoon
+  - een ongeletterde persoon
+immigration_status:
+  values:
+  - staatsburger (geboren of genaturaliseerd)
+  - immigrant
+  template_choices:
+  - een geboren of genaturaliseerd staatsburger
+  - een immigrant
+urbanicity:
+  values:
+  - stedelijk
+  - landelijk
+  template_choices:
+  - een stedeling
+  - een plattelandsbewoner
+marital_status:
+  values:
+  - alleenstaand
+  - getrouwd
+  - gescheiden of uit elkaar
+  - verweduwd
+  - geregistreerd partnerschap
+  template_choices:
+  - iemand die alleenstaand is
+  - iemand die getrouwd is
+  - iemand die gescheiden of uit elkaar is
+  - iemand die verweduwd is
+  - iemand die een geregistreerd partnerschap heeft
+parental_status:
+  values:
+  - kinderloos
+  - met kinderen
+  template_choices:
+  - een persoon die kinderloos is
+  - een persoon die kinderen heeft
+income_level:
+  values:
+  - laag inkomen
+  - middeninkomen
+  - hoog inkomen
+  template_choices:
+  - een persoon met een laag inkomen
+  - een persoon met een middeninkomen
+  - een persoon met een hoog inkomen
+employment_status:
+  values:
+  - vast werk
+  - onzeker werk
+  - werkloos
+  - student
+  - gepensioneerd
+  - overig
+  template_choices:
+  - iemand met vast werk
+  - iemand met onzeker werk
+  - iemand die werkloos is
+  - een student
+  - iemand die met pensioen is
+  - null
+professional_field:
+  values:
+  - wetenschap, technologie, techniek en wiskunde (BÈTA)
+  - gezondheidszorg en geneeskunde
+  - onderwijs en training
+  - media en communicatie
+  - kunst en creatieve industrie
+  - zakelijke, financiëel, juridisch
+  - administratieve ondersteuning en ondersteunende diensten
+  - maatschappelijke dienstverlening
+  - openbaar bestuur
+  - ambachten en vakarbeid (e.g. bouw of constructie)
+  - landbouw
+  - overig
+  template_choices:
+  - een persoon die werkt in een BÈTA-vakgebied (wetenschap, technologie, techniek
+    en wiskunde)
+  - een persoon die werkt in de gezondheidszorg of geneeskunde
+  - een persoon die werkt in onderwijs of training
+  - een persoon die werkt in media of communicatie
+  - een persoon die werkt in kunst of creatieve industrie
+  - een persoon die werkt in zakelijke, financiële of juridische dienstverlening
+  - een persoon die werkt in administratieve ondersteuning en ondersteunende diensten
+  - een persoon die werkt in maatschappelijke dienstverlening
+  - een persoon die werkt in het openbaar bestuur
+  - een persoon die werkt in ambachten of vakarbeid (bijv. bouw of constructie)
+  - een persoon die werkt in de landbouw
+  - null
+housing_status:
+  values:
+  - huiseigenaar
+  - huurder
+  - dakloos
+  - overig
+  template_choices:
+  - een huiseigenaar
+  - een huurder
+  - een dakloze
+  - null

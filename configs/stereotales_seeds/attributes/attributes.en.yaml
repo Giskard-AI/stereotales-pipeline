@@ -1,0 +1,248 @@
+age:
+  values:
+    - "child (0-12)"
+    - "adolescent (13-17)"
+    - "young adult (18-29)"
+    - "adult (30-44)"
+    - "middle-aged (45-64)"
+    - "senior (65+)"
+  # template choices must fit with the sentence "the main character is {{choice}}"
+  template_choices:
+    - "a child (0-12)"
+    - "an adolescent (13-17)"
+    - "a young adult (18-29)"
+    - "an adult (30-44)"
+    - "a middle-aged person (45-64)"
+    - "a senior (65+)"
+gender:
+  values:
+    - "man"
+    - "woman"
+    - "non-binary"
+    - "other"
+  template_choices:
+    - "a man"
+    - "a woman"
+    - "a non-binary person"
+    - null
+gender_alignment:
+  values:
+    - "cisgender"
+    - "transgender"
+    - "other"
+  template_choices:
+    - "a cisgender person"
+    - "a transgender person"
+    - null
+
+sexual_orientation:
+  values:
+    - "heterosexual"
+    - "homosexual"
+    - "bisexual"
+    - "pansexual"
+    - "asexual"
+    - "other"
+  template_choices:
+    - "a heterosexual person"
+    - "a homosexual person"
+    - "a bisexual person"
+    - "a pansexual person"
+    - "an asexual person"
+    - null
+
+geographic_origin:
+  values:
+    - "north america (e.g. United States, Canada)"
+    - "south or central america (e.g. Mexico, Brazil, Argentina, Cuba, etc)"
+    - "europe (e.g. United Kingdom, Spain, Russia, Greece, etc)"
+    - "south eastern asia (e.g. Thailand, Vietnam, Philippines, Malaysia, Indonesia, etc)"
+    - "eastern asia (e.g. Japan, Korea, China, etc)"
+    - "central asia (e.g. Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan, Uzbekistan, etc)"
+    - "southern asia (e.g. India, Pakistan, Sri Lanka, Nepal, etc)"
+    - "northern africa (e.g. Egypt, Sudan, Algeria, Morocco, Tunisia, etc)" 
+    - "sub-saharan africa (e.g. Nigeria, Ethiopia, Kenya, Tanzania, Uganda, etc)"
+    - "middle east (e.g. Saudi Arabia, Iran, Afghanistan, etc)"
+    - "oceania (e.g. Australia, New Zealand, Fiji, etc)"
+    - "other"
+  template_choices:
+    - "a person from north america (e.g. United States, Canada)"
+    - "a person from south or central america (e.g. Mexico, Brazil, Argentina, Cuba, etc)"
+    - "a person from europe (e.g. United Kingdom, Spain, Russia, Greece, etc)"
+    - "a person from south eastern asia (e.g. Thailand, Vietnam, Philippines, Malaysia, Indonesia, etc)"
+    - "a person from eastern asia (e.g. Japan, Korea, China, etc)"
+    - "a person from central asia (e.g. Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan, Uzbekistan, etc)"
+    - "a person from southern asia (e.g. India, Pakistan, Sri Lanka, Nepal, etc)"
+    - "a person from northern africa (e.g. Egypt, Sudan, Algeria, Morocco, Tunisia, etc)"
+    - "a person from sub-saharan africa (e.g. Nigeria, Ethiopia, Kenya, Tanzania, Uganda, etc)"
+    - "a person from middle east (e.g. Saudi Arabia, Iran, Afghanistan, etc)"
+    - "a person from oceania (e.g. Australia, New Zealand, Fiji, etc)"
+    - null
+
+education:
+  values:
+    - "basic (e.g. less than high school, or high school)"
+    - "undergraduate (e.g. bachelor's degree, some college)"
+    - "graduate (e.g. master's degree, doctoral degree)"
+  template_choices:
+    - "a person with a basic education (less than high school, or high school)"
+    - "a person with an undergraduate education (bachelor's degree or some college)"
+    - "a person with a graduate education (master's degree or doctoral degree)"
+
+religion:
+  values:
+    - "Christian"
+    - "Jewish"
+    - "Muslim"
+    - "Hindu"
+    - "Buddhist"
+    - "Atheist/Agnostic"
+    - "other"
+  template_choices:
+    - "a Christian"
+    - "a person of Jewish faith"
+    - "a Muslim"
+    - "a Hindu"
+    - "a Buddhist"
+    - "an Atheist/Agnostic"
+    - null
+
+political_orientation:
+  values:
+    - "conservative"
+    - "centrist"
+    - "progressive"
+  template_choices:
+    - "a politically conservative person"
+    - "a politically centrist person"
+    - "a politically progressive person"
+
+health_status:
+  values:
+    - "good"
+    - "fair"
+    - "poor"
+  template_choices:
+    - "a person with good health"
+    - "a person with fair health"
+    - "a person with poor health"
+
+disability_status:
+  values:
+    - "no disability"
+    - "some disability"
+  template_choices:
+    - "a person with no disability"
+    - "a person with a disability"
+
+literacy_status:
+  values:
+    - "literate"
+    - "illiterate"
+  template_choices:
+    - "a literate person"
+    - "an illiterate person"
+
+immigration_status:
+  values:
+    - "citizen (native-born or naturalized)"
+    - "immigrant"
+  template_choices:
+    - "a native-born or naturalized citizen"
+    - "an immigrant"
+
+urbanicity:
+  values:
+    - "urban"
+    - "rural"
+  template_choices:
+    - "an urban person"
+    - "a rural person"
+
+marital_status:
+  values:
+    - "single"
+    - "married"
+    - "divorced or separated"
+    - "widowed"
+    - "domestic partnership"
+  template_choices:
+    - "a person who is single"
+    - "a person who is married"
+    - "a person who is divorced or separated"
+    - "a person who is widowed"
+    - "a person who is in a domestic partnership"
+
+parental_status:
+  values:
+    - "childless"
+    - "with children"
+  template_choices:
+    - "a person who is childless"
+    - "a person who has children"
+
+income_level:
+  values:
+    - "low income"
+    - "middle income"
+    - "high income"
+  template_choices:
+    - "a person with low income"
+    - "a person with middle income"
+    - "a person with high income"
+
+employment_status:
+  values:
+    - "stable employment"
+    - "precarious employment"
+    - "unemployed"
+    - "student"
+    - "retired"
+    - "other"
+  template_choices:
+    - "a person with stable employment"
+    - "a person with precarious employment"
+    - "a person who is unemployed"
+    - "a student"
+    - "a person who is retired"
+    - null
+
+professional_field:
+  values:
+    - "science, technology, engineering, and math (STEM)"
+    - "healthcare and medicine"
+    - "education and training"
+    - "media and communication"
+    - "arts and creative industries"
+    - "business, finance, legal"
+    - "administrative assistance and support services"
+    - "social services"
+    - "public administration"
+    - "trades and manual labor (e.g. construction, manufacturing)"
+    - "agriculture"
+    - "other"
+  template_choices:
+    - "a person working in a STEM field (science, technology, engineering, and math)"
+    - "a person working in healthcare or medicine"
+    - "a person working in education or training"
+    - "a person working in media or communication"
+    - "a person working in arts or creative industries"
+    - "a person working in business, finance, or legal"
+    - "a person working in administrative assistance and support services"
+    - "a person working in social services"
+    - "a person working in public administration"
+    - "a person working in trades or manual labor (e.g. construction, manufacturing)"
+    - "a person working in agriculture"
+    - null
+
+housing_status:
+  values:
+    - "homeowner"
+    - "renter"
+    - "homeless"
+    - "other"
+  template_choices:
+    - "a homeowner"
+    - "a renter"
+    - "a homeless person"
+    - null
