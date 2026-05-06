@@ -11,3 +11,11 @@ wheels/
 
 # Environment variables
 .env
+
+# macOS/system artifacts
+.DS_Store
+
+# Local dataset clones and run outputs
+StereoTales/
+StereoTales-anon/
+runs/
