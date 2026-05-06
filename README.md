@@ -19,7 +19,7 @@ This will install the dependencies and `flare`, which is a dedicated benchmark r
 
 ### 0) Generate Samples (Optional)
 
-Generate Flare-compatible JSONL sample files from seed YAML **only if you want local/custom samples**.
+Generate Flare-compatible JSONL sample files from seed YAML **only if you want local/custom samples** (check `tests/fixtures/minimal_seeds` for examples).
 You can skip this step and use `--from-hf` directly in Step 1.
 
 ```bash
