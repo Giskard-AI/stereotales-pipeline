@@ -19,3 +19,6 @@ wheels/
 StereoTales/
 StereoTales-anon/
 runs/
+
+# temp dirs
+.tmp_*/
