@@ -4,11 +4,13 @@ import tarfile
 from concurrent.futures import ProcessPoolExecutor
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 
 import lz4.frame
 import numpy as np
 import pandas as pd
 import scipy.stats as ss
+from datasets import get_dataset_config_names, load_dataset
 
 from fresnel_pipeline.models import (
     Association,
@@ -63,6 +65,90 @@ def load_archive(archive_path: Path, max_samples: int | None = None) -> pd.DataF
                         attrs = extraction["attributes"]
                         attrs[base_attr] = meta_value
                         rows.append({**base, "extracted": attrs})
+    return pd.DataFrame(rows)
+
+
+def _parse_extracted_attrs(value: Any) -> dict[str, Any]:
+    if isinstance(value, dict):
+        return value
+    if isinstance(value, str):
+        stripped = value.strip()
+        if not stripped:
+            return {}
+        try:
+            parsed = json.loads(stripped)
+        except json.JSONDecodeError:
+            return {}
+        return parsed if isinstance(parsed, dict) else {}
+    return {}
+
+
+def load_hf_dataset(
+    dataset_id: str,
+    config: str,
+    split: str,
+    max_samples: int | None = None,
+    model_col: str = "generator_model",
+    sample_id_col: str = "sample_id",
+    language_col: str = "language",
+    attribute_col: str = "target_attribute",
+    attribute_value_col: str = "target_attribute_value",
+    extracted_col: str = "extracted_attributes_json",
+) -> pd.DataFrame:
+    rows: list[dict[str, Any]] = []
+    if config:
+        configs = [config]
+    else:
+        all_configs = get_dataset_config_names(dataset_id)
+        configs = sorted([cfg for cfg in all_configs if cfg.endswith("_stories")])
+        if not configs:
+            raise ValueError(
+                f"No *_stories configs found for dataset={dataset_id}. "
+                f"Available configs: {all_configs}"
+            )
+
+    for cfg in configs:
+        ds = load_dataset(dataset_id, cfg, split=split)
+        if max_samples is not None:
+            ds = ds.select(range(min(max_samples, len(ds))))
+
+        missing_required_cols = {
+            model_col,
+            sample_id_col,
+            language_col,
+            attribute_col,
+            attribute_value_col,
+            extracted_col,
+        } - set(ds.column_names)
+        if missing_required_cols:
+            raise ValueError(
+                f"HF config '{cfg}' is missing required columns: "
+                f"{sorted(missing_required_cols)}. "
+                f"Available columns: {ds.column_names}"
+            )
+
+        for row in ds:
+            base_attr = row.get(attribute_col)
+            if not base_attr:
+                continue
+
+            extracted = _parse_extracted_attrs(row.get(extracted_col))
+            if not extracted:
+                continue
+
+            base_value = row.get(attribute_value_col)
+            if base_value is not None:
+                extracted[str(base_attr)] = METADATA_VALUE_NORMALIZATION.get(str(base_value), str(base_value))
+
+            rows.append(
+                {
+                    "model": str(row.get(model_col) or "unknown_model"),
+                    "sample_id": str(row.get(sample_id_col) or ""),
+                    "language": str(row.get(language_col) or "unknown"),
+                    "attribute": str(base_attr),
+                    "extracted": extracted,
+                }
+            )
     return pd.DataFrame(rows)
 
 
@@ -208,20 +294,68 @@ def to_association(raw: dict, model_id: str, sample_ids: list[str], aggregation_
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Compute value associations from Flare run outputs.")
-    parser.add_argument("archive_path", type=Path, help="Path to result.tar.lz4")
+    parser.add_argument("archive_path", nargs="?", type=Path, help="Path to result.tar.lz4")
+    parser.add_argument(
+        "--from-hf",
+        action="store_true",
+        help="Load input rows from a Hugging Face dataset instead of a result.tar.lz4 archive.",
+    )
+    parser.add_argument("--hf-dataset", type=str, default="anonymous-authors/StereoTales")
+    parser.add_argument(
+        "--hf-config",
+        type=str,
+        default=None,
+        help=(
+            "HF configuration name (e.g. en_stories). "
+            "If omitted with --from-hf, all dataset configs ending with '_stories' are loaded."
+        ),
+    )
+    parser.add_argument("--hf-split", type=str, default="train")
+    parser.add_argument("--hf-model-col", type=str, default="generator_model")
+    parser.add_argument("--hf-sample-id-col", type=str, default="sample_id")
+    parser.add_argument("--hf-language-col", type=str, default="language")
+    parser.add_argument("--hf-attribute-col", type=str, default="target_attribute")
+    parser.add_argument("--hf-attribute-value-col", type=str, default="target_attribute_value")
+    parser.add_argument("--hf-extracted-col", type=str, default="extracted_attributes_json")
     parser.add_argument("--output-dir", type=Path, default=None)
     parser.add_argument("--max-samples", type=int, default=None)
     parser.add_argument("--agg-by-lang", action="store_true")
-    return parser.parse_args()
+    args = parser.parse_args()
+
+    if args.from_hf and args.archive_path is not None:
+        parser.error("archive_path cannot be provided when --from-hf is used.")
+    if not args.from_hf and args.archive_path is None:
+        parser.error("archive_path is required unless --from-hf is used.")
+
+    return args
 
 
 def main() -> None:
     args = parse_args()
-    output_dir = args.output_dir or args.archive_path.resolve().parent / (
+    source_root = Path.cwd() if args.from_hf else args.archive_path.resolve().parent
+    output_dir = args.output_dir or source_root / (
         f"associations_{'global' if not args.agg_by_lang else 'by_language'}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     )
     output_dir.mkdir(parents=True, exist_ok=True)
-    df = load_archive(args.archive_path, max_samples=args.max_samples)
+    if args.from_hf:
+        df = load_hf_dataset(
+            dataset_id=args.hf_dataset,
+            config=args.hf_config,
+            split=args.hf_split,
+            max_samples=args.max_samples,
+            model_col=args.hf_model_col,
+            sample_id_col=args.hf_sample_id_col,
+            language_col=args.hf_language_col,
+            attribute_col=args.hf_attribute_col,
+            attribute_value_col=args.hf_attribute_value_col,
+            extracted_col=args.hf_extracted_col,
+        )
+    else:
+        df = load_archive(args.archive_path, max_samples=args.max_samples)
+
+    if df.empty:
+        raise SystemExit("No valid rows found to compute associations.")
+
     slices = [(lang, sdf) for lang, sdf in df.groupby("language")] if args.agg_by_lang else [("all", df)]
     aggregation_dimension = ["language"] if args.agg_by_lang else []
     with ProcessPoolExecutor() as pool:

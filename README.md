@@ -74,6 +74,9 @@ uv run 01-generate-stories \
   --limit 50
 ```
 
+If `--hf-config` is omitted, Step 1 auto-loads all generation-style configs from the dataset
+(for StereoTales: language subsets like `en`, `fr`, plus `additional_en`; excluding `*_stories` and eval tables).
+
 Useful flags:
 
 - `--limit N` — when staging from `--samples-jsonl`/`--from-hf`, keep only the first N rows
@@ -95,6 +98,21 @@ uv run 02-compute-associations \
 ```
 
 Outputs a directory with one JSONL file per model (and language when `--agg-by-lang` is enabled).
+
+Or compute directly from a Hugging Face dataset split (expects extracted attributes columns):
+
+```bash
+uv run 02-compute-associations \
+  --from-hf \
+  --hf-dataset anonymous-authors/StereoTales \
+  --hf-config en_stories \
+  --hf-split train \
+  --agg-by-lang
+```
+
+For StereoTales, use `*_stories` configs (e.g. `en_stories`, `fr_stories`) rather than seed configs like `en`.
+
+If `--hf-config` is omitted, the script auto-loads all HF configs ending with `*_stories`.
 
 ### 3) Export Fresnel Run to StereoTales
 

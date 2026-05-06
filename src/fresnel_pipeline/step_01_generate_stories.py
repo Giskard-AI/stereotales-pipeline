@@ -39,7 +39,15 @@ def parse_args() -> argparse.Namespace:
     )
 
     parser.add_argument("--hf-dataset", type=str, default="anonymous-authors/StereoTales")
-    parser.add_argument("--hf-config", type=str, default="en")
+    parser.add_argument(
+        "--hf-config",
+        type=str,
+        default=None,
+        help=(
+            "HF config name (e.g. en). "
+            "If omitted with --from-hf, all generation-style configs are loaded."
+        ),
+    )
     parser.add_argument("--hf-split", type=str, default="train")
     parser.add_argument(
         "--limit",
@@ -110,24 +118,48 @@ def _stage_jsonl(src_jsonl: Path, dest_dir: Path, limit: int | None) -> None:
 
 def _stage_from_hf(
     dataset_id: str,
-    config: str,
+    config: str | None,
     split: str,
     limit: int | None,
     dest_dir: Path,
 ) -> None:
-    """Materialize a HF dataset slice as a JSONL file in dest_dir."""
-    from datasets import load_dataset
+    """Materialize one or many HF dataset slices as JSONL files in dest_dir."""
+    from datasets import get_dataset_config_names, load_dataset
 
-    ds = load_dataset(dataset_id, config, split=split)
-    if limit is not None:
-        ds = ds.select(range(min(limit, len(ds))))
+    if config:
+        configs = [config]
+    else:
+        all_configs = get_dataset_config_names(dataset_id)
+        configs = sorted(
+            [
+                cfg
+                for cfg in all_configs
+                if not cfg.endswith("_stories")
+                and not cfg.startswith("associations_")
+                and cfg not in {"human_study", "llm_evals"}
+            ]
+        )
+        if not configs:
+            raise ValueError(
+                f"No generation-style configs found for dataset={dataset_id}. "
+                f"Available configs: {all_configs}"
+            )
 
     dest_dir.mkdir(parents=True, exist_ok=True)
-    out = dest_dir / f"story_generation_samples.{config}.jsonl"
-    with out.open("w", encoding="utf-8") as fout:
-        for row in ds:
-            fout.write(json.dumps(_jsonable(row), ensure_ascii=False) + "\n")
-    LOGGER.info("Staged %d rows from hf://%s::%s::%s -> %s", len(ds), dataset_id, config, split, out)
+    total_rows = 0
+    for cfg in configs:
+        ds = load_dataset(dataset_id, cfg, split=split)
+        if limit is not None:
+            ds = ds.select(range(min(limit, len(ds))))
+
+        out = dest_dir / f"story_generation_samples.{cfg}.jsonl"
+        with out.open("w", encoding="utf-8") as fout:
+            for row in ds:
+                fout.write(json.dumps(_jsonable(row), ensure_ascii=False) + "\n")
+        total_rows += len(ds)
+        LOGGER.info("Staged %d rows from hf://%s::%s::%s -> %s", len(ds), dataset_id, cfg, split, out)
+
+    LOGGER.info("Staged %d total rows across %d HF configs", total_rows, len(configs))
 
 
 def _jsonable(value: Any) -> Any:
