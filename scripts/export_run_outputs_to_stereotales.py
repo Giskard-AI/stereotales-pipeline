@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export cleaned Fresnel story-generation outputs into StereoTales language folders.
+"""Export cleaned story-generation outputs into StereoTales language folders.
 
 Reads files from:
   <run-result-root>/<model>/biases/story_generation/*.json
@@ -20,7 +20,7 @@ from typing import Any
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-LOGGER = logging.getLogger("export_fresnel_run")
+LOGGER = logging.getLogger("export_run_outputs")
 
 STORIES_SUBDIR = "stories"
 LANG_DIR_ALIASES: dict[str, str] = {"nl": "du"}
@@ -45,7 +45,7 @@ def parse_args() -> argparse.Namespace:
         "--run-result-root",
         type=Path,
         required=True,
-        help="Path to fresnel run result dir containing per-model subfolders.",
+        help="Path to run output dir containing per-model subfolders.",
     )
     parser.add_argument(
         "--dataset-repo",

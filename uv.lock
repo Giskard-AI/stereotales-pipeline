@@ -350,7 +350,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "fresnel-pipeline"
+name = "stereotales-pipeline"
 version = "1.0.0"
 source = { editable = "." }
 dependencies = [

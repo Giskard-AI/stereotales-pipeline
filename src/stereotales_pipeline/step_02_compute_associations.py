@@ -12,7 +12,7 @@ import pandas as pd
 import scipy.stats as ss
 from datasets import get_dataset_config_names, load_dataset
 
-from fresnel_pipeline.models import (
+from stereotales_pipeline.models import (
     Association,
     AssociationStatistics,
     AssociatedValues,

@@ -1,7 +1,7 @@
 [project]
-name = "fresnel-pipeline"
+name = "stereotales-pipeline"
 version = "1.0.0"
-description = "Fresnel pipeline for story generation, associations, and StereoTales export."
+description = "StereoTales pipeline for story generation, associations, and Hugging Face Dataset export."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -17,9 +17,9 @@ dependencies = [
 ]
 
 [project.scripts]
-00-generate-samples = "fresnel_pipeline.step_00_generate_samples:main"
-01-generate-stories = "fresnel_pipeline.step_01_generate_stories:main"
-02-compute-associations = "fresnel_pipeline.step_02_compute_associations:main"
+00-generate-samples = "stereotales_pipeline.step_00_generate_samples:main"
+01-generate-stories = "stereotales_pipeline.step_01_generate_stories:main"
+02-compute-associations = "stereotales_pipeline.step_02_compute_associations:main"
 
 [build-system]
 requires = ["setuptools>=61", "wheel"]

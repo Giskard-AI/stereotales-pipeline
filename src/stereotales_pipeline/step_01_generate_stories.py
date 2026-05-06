@@ -16,7 +16,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Generate stories by invoking the `flare` CLI as a subprocess. "
-            "Accepts a Fresnel-style JSON config (models + scorers) and a sample folder; "
+            "Accepts a JSON config (models + scorers) for flare and a sample folder; "
             "samples can also be staged from a local JSONL or the StereoTales HF subset."
         )
     )
@@ -60,7 +60,7 @@ def parse_args() -> argparse.Namespace:
         "--config-path",
         type=Path,
         required=True,
-        help="Fresnel-style JSON config (e.g. fresnel_run/configs/fresnel_v1.json).",
+        help="JSON config for flare (e.g. configs/test_run.json).",
     )
     parser.add_argument(
         "--run-path",
@@ -176,7 +176,7 @@ def _resolve_sample_path(args: argparse.Namespace) -> tuple[Path, Path | None]:
     if args.sample_path is not None:
         return args.sample_path, None
 
-    staging = Path(tempfile.mkdtemp(prefix="fresnel_pipeline_samples_"))
+    staging = Path(tempfile.mkdtemp(prefix="pipeline_samples_"))
     if args.samples_jsonl is not None:
         _stage_jsonl(args.samples_jsonl, staging, args.limit)
     else:

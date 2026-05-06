@@ -1,11 +1,11 @@
-## Fresnel Pipeline
+## Pipeline
 
 This repository contains the code to:
 
 - generate story samples in Flare format (from validated seed YAML files),
-- run story generation/scoring via `flare`,
-- compute bias/value associations from Fresnel run archives,
-- export Fresnel run outputs into StereoTales parquet shards.
+- run story generation/scoring,
+- compute bias/value associations from run archives,
+- export run outputs into StereoTales parquet shards.
 
 ## Setup
 
@@ -13,7 +13,7 @@ This repository contains the code to:
 uv sync
 ```
 
-`flare` is installed directly from GitHub via `pyproject.toml`.
+This will install the dependencies and `flare`, which is a dedicated benchmark runner with scoring capabilities.
 
 ## CLI Commands
 
@@ -31,7 +31,7 @@ uv run 00-generate-samples \
 
 ### 1) Generate Stories
 
-This step is a thin wrapper around the `flare` CLI. It accepts a Fresnel-style JSON
+This step is a thin wrapper around the `flare` CLI. It accepts a JSON
 config (with `models` and `scorers`) and a sample folder, and dispatches generation
 and scoring across every configured model in parallel. Outputs land at
 `<run-path>/<name>/result/...` (same layout `flare` always writes).
@@ -47,9 +47,9 @@ Direct sample folder (matches `flare` 1:1):
 ```bash
 uv run 01-generate-stories \
   --sample-path /path/to/samples_folder \
-  --config-path ./configs/fresnel_test_run.json \
+  --config-path ./configs/test_run.json \
   --run-path /path/to/runs \
-  --name my_run
+  --name test_run
 ```
 
 From a local JSONL (it's staged into a temp folder for `flare` to glob):
@@ -57,9 +57,9 @@ From a local JSONL (it's staged into a temp folder for `flare` to glob):
 ```bash
 uv run 01-generate-stories \
   --samples-jsonl /path/to/story_generation_samples.en.jsonl \
-  --config-path ./configs/fresnel_test_run.json \
+  --config-path ./configs/test_run.json \
   --run-path /path/to/runs \
-  --name my_run \
+  --name test_run \
   --limit 50
 ```
 
@@ -68,9 +68,9 @@ From the StereoTales Hugging Face subset:
 ```bash
 uv run 01-generate-stories \
   --from-hf --hf-config en \
-  --config-path ./configs/fresnel_test_run.json \
+  --config-path ./configs/test_run.json \
   --run-path /path/to/runs \
-  --name my_run \
+  --name test_run \
   --limit 50
 ```
 
@@ -87,7 +87,7 @@ Useful flags:
 
 Config note:
 
-- `./configs/fresnel_test_run.json` is a lightweight test config in this repo for quick smoke runs.
+- `./configs/test_run.json` is a lightweight test config in this repo for quick smoke runs.
 
 ### 2) Compute Associations
 
@@ -114,10 +114,28 @@ For StereoTales, use `*_stories` configs (e.g. `en_stories`, `fr_stories`) rathe
 
 If `--hf-config` is omitted, the script auto-loads all HF configs ending with `*_stories`.
 
-### 3) Export Fresnel Run to StereoTales
+### 3) Export Run Outputs to the same format of StereoTales Hugging Face Dataset
+
+This step exports the run outputs to the same format of StereoTales Hugging Face Dataset.
 
 ```bash
-uv run python scripts/export_fresnel_run_to_stereotales.py \
-  --run-result-root /path/to/fresnel_run_outputs \
+uv run python scripts/export_run_outputs_to_stereotales.py \
+  --run-result-root /path/to/run_outputs \
   --dataset-repo /path/to/StereoTales
 ```
+
+The parquet files include the following columns:
+- `generator_model`: the model that generated the story
+- `sample_id`: the sample id
+- `language`: the language of the story
+- `target_attribute`: the attribute
+- `target_attribute_value`: the attribute value
+- `attribute_value_key`: the attribute value key
+- `scenario`: the scenario
+- `scenario_key`: the scenario key
+- `scenario_group`: the scenario group
+- `character`: the character
+- `prompt_template`: the prompt template
+- `story`: the story
+- `extracted_attributes_json`: the extracted attributes from the story
+- ...
