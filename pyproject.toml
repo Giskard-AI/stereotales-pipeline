@@ -17,9 +17,9 @@ dependencies = [
 ]
 
 [project.scripts]
+00-generate-samples = "fresnel_pipeline.step_00_generate_samples:main"
 01-generate-stories = "fresnel_pipeline.step_01_generate_stories:main"
-02a-compute-associations = "fresnel_pipeline.step_02a_compute_associations:main"
-02b-export-fresnel-run-to-stereotales = "fresnel_pipeline.step_02b_export_fresnel_run_to_stereotales:main"
+02-compute-associations = "fresnel_pipeline.step_02_compute_associations:main"
 
 [build-system]
 requires = ["setuptools>=61", "wheel"]
