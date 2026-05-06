@@ -6,12 +6,6 @@ This repository contains the code to:
 - compute bias/value associations from Fresnel run archives,
 - export Fresnel run outputs into StereoTales parquet shards.
 
-The implementation is adapted from:
-
-- `fresnel_generation/scripts/04_generate_samples.py`
-- `src/fresnel_pipeline/step_02b_export_fresnel_run_to_stereotales.py`
-- `eval_pipeline/scripts/01_compute_associations.py`
-
 ## Setup
 
 ```bash
