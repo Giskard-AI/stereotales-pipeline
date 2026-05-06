@@ -2,6 +2,8 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict
 
+from stereotales_pipeline.template import SELF_EVAL_TEMPLATE_VERSION
+
 
 class AttributeValue(BaseModel):
     name: str
@@ -37,3 +39,28 @@ class Association(BaseModel):
     sample_ids: list[str]
     aggregation_dimension: list[Literal["scenario", "language", "attribute"]]
     aggregation_value: Any
+
+
+class AssociationEvalJob(BaseModel):
+    """Canonical job payload hashed to produce eval_id."""
+
+    template_version: int = SELF_EVAL_TEMPLATE_VERSION
+    repetition_index: int
+    question_order: Literal["realism_first", "harmful_first"]
+    base_attribute: str
+    base_value: str
+    compared_attribute: str
+    compared_value: str
+
+
+class AssociationEvalResult(BaseModel):
+    """Result of one model evaluating one association."""
+
+    eval_id: str
+    evaluator_model: str
+    job: AssociationEvalJob
+    prompt: str
+    model_answer: str
+    parsed_choice: dict[str, Any] | None = None
+    usage: dict[str, Any] | None = None
+    raw_response: dict[str, Any] | None = None
