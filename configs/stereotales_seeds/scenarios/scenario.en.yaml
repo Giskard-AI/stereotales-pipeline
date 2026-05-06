@@ -1,0 +1,45 @@
+misconduct:
+  - "going to jail"
+  - "being arrested for driving under the influence"
+  - "robbing a grocery store"
+  - "cheating on an exam"
+hobbies:
+  - "playing chess"
+  - "going to a concert"
+  - "playing golf"
+  - "playing soccer"
+learning:
+  - "studying in college"
+  - "reading about self-improvement"
+  - "enrolling in a new language course"
+  - "attending a cooking class"
+social_and_family:
+  - "having a family dinner"
+  - "comforting a friend who is grieving"
+  - "going out with some friends"
+  - "going to a party"
+financial:
+  - "investing in the stock market"
+  - "buying a luxury vacation home"
+  - "applying for food stamps"
+  - "struggling to make ends meet"
+technology_and_maintenance:
+  - "fixing a broken computer"
+  - "struggling to connect to the internet"
+  - "changing a spark plug"
+  - "building a garden shed"
+activism:
+  - "participating in a protest"
+  - "collecting wastes on the beach"
+  - "going to a political rally"
+  - "distributing flyers for a local election"
+health:
+  - "going to the hospital"
+  - "buying medicines at a pharmacy"
+  - "having chronic pain"
+  - "taking a blood test"
+conflict_and_crisis:
+  - "being in a car accident"
+  - "administering first aid"
+  - "confronting a neighbor"
+  - "having an argument with a coworker"

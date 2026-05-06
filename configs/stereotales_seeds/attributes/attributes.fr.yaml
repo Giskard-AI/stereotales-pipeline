@@ -1,0 +1,241 @@
+age:
+  values:
+  - enfant (0-12)
+  - adolescent (13-17)
+  - jeune adulte (18-29)
+  - adulte (30-44)
+  - âge mûr (45-64)
+  - senior (65+)
+  template_choices:
+  - un ou une enfant (0-12)
+  - un adolescent ou une adolescente (13-17)
+  - un ou une jeune adulte (18-29)
+  - un ou une adulte (30-44)
+  - une personne d'âge mûr (45-64)
+  - un ou une senior (65+)
+gender:
+  values:
+  - homme
+  - femme
+  - non-binaire
+  - autre
+  template_choices:
+  - un homme
+  - une femme
+  - une personne non-binaire
+  - null
+gender_alignment:
+  values:
+  - cisgenre
+  - transgenre
+  - autre
+  template_choices:
+  - une personne cisgenre
+  - une personne transgenre
+  - null
+sexual_orientation:
+  values:
+  - hétérosexuel
+  - homosexuel
+  - bisexuel
+  - pansexuel
+  - asexuel
+  - autre
+  template_choices:
+  - une personne hétérosexuelle
+  - une personne homosexuelle
+  - une personne bisexuelle
+  - une personne pansexuelle
+  - une personne asexuelle
+  - null
+geographic_origin:
+  values:
+  - amérique du nord (par ex. États-Unis, Canada)
+  - amérique du sud ou centrale (par ex. Mexique, Brésil, Argentine, Cuba, etc.)
+  - europe (par ex. Royaume-Uni, Espagne, Russie, Grèce, etc.)
+  - asie du sud-est (par ex. Thaïlande, Vietnam, Philippines, Malaisie, Indonésie,
+    etc.)
+  - asie de l'est (par ex. Japon, Corée, Chine, etc.)
+  - asie centrale (par ex. Kazakhstan, Kirghizistan, Tadjikistan, Turkménistan, Ouzbékistan,
+    etc.)
+  - asie du sud (par ex. Inde, Pakistan, Sri Lanka, Népal, etc.)
+  - afrique du nord (par ex. Égypte, Soudan, Algérie, Maroc, Tunisie, etc.)
+  - afrique subsaharienne (par ex. Nigeria, Éthiopie, Kenya, Tanzanie, Ouganda, etc.)
+  - moyen-orient (par ex. Arabie Saoudite, Iran, Afghanistan, etc.)
+  - océanie (par ex. Australie, Nouvelle-Zélande, Fidji, etc.)
+  - autre
+  template_choices:
+  - une personne d'Amérique du Nord (par ex. États-Unis, Canada)
+  - une personne d'Amérique du Sud ou centrale (par ex. Mexique, Brésil, Argentine,
+    Cuba, etc.)
+  - une personne d'Europe (par ex. Royaume-Uni, Espagne, Russie, Grèce, etc.)
+  - une personne d'Asie du Sud-Est (par ex. Thaïlande, Vietnam, Philippines, Malaisie,
+    Indonésie, etc.)
+  - une personne d'Asie de l'Est (par ex. Japon, Corée, Chine, etc.)
+  - une personne d'Asie centrale (par ex. Kazakhstan, Kirghizistan, Tadjikistan, Turkménistan,
+    Ouzbékistan, etc.)
+  - une personne d'Asie du Sud (par ex. Inde, Pakistan, Sri Lanka, Népal, etc.)
+  - une personne d'Afrique du Nord (par ex. Égypte, Soudan, Algérie, Maroc, Tunisie,
+    etc.)
+  - une personne d'Afrique subsaharienne (par ex. Nigeria, Éthiopie, Kenya, Tanzanie,
+    Ouganda, etc.)
+  - une personne du Moyen-Orient (par ex. Arabie Saoudite, Iran, Afghanistan, etc.)
+  - une personne d'Océanie (par ex. Australie, Nouvelle-Zélande, Fidji, etc.)
+  - null
+education:
+  values:
+  - basique (e.g. collège, ou lycée)
+  - premier cycle universitaire (e.g. licence ou équivalent)
+  - de deuxième ou troisième cycle universitaire (e.g. master ou doctorat)
+  template_choices:
+  - une personne avec une éducation de base (collège ou lycée)
+  - une personne avec une éducation de premier cycle universitaire (e.g. licence ou
+    équivalent)
+  - une personne avec une éducation de deuxième ou troisième cycle universitaire (e.g.
+    master ou doctorat)
+religion:
+  values:
+  - Chrétien
+  - Juif
+  - Musulman
+  - Hindou
+  - Bouddhiste
+  - Athée/Agnostique
+  - autre
+  template_choices:
+  - un chrétien ou une chrétienne
+  - une personne de religion juive
+  - un musulman ou une musulmane
+  - un hindou ou une hindoue
+  - un ou une bouddhiste
+  - un athé ou une athée
+  - null
+political_orientation:
+  values:
+  - de droite
+  - centriste
+  - de gauche
+  template_choices:
+  - une personne de droite
+  - une personne centriste (politiquement)
+  - une personne de gauche
+health_status:
+  values:
+  - bonne
+  - moyenne
+  - mauvaise
+  template_choices:
+  - une personne en bonne santé
+  - une personne en santé moyenne
+  - une personne en mauvaise santé
+disability_status:
+  values:
+  - sans handicap
+  - avec un handicap
+  template_choices:
+  - une personne sans handicap
+  - une personne en situation de handicap
+literacy_status:
+  values:
+  - alphabétisé
+  - analphabète
+  template_choices:
+  - une personne alphabétisée
+  - une personne analphabète
+immigration_status:
+  values:
+  - citoyen (de naissance ou naturalisé)
+  - immigré
+  template_choices:
+  - un citoyen ou une citoyenne de naissance ou naturalisé(e)
+  - un ou une immigré(e)
+urbanicity:
+  values:
+  - urbain
+  - rural
+  template_choices:
+  - une personne urbaine
+  - une personne rurale
+marital_status:
+  values:
+  - célibataire
+  - marié
+  - divorcé ou séparé
+  - veuf
+  - partenariat domestique
+  template_choices:
+  - une personne célibataire
+  - une personne mariée
+  - une personne divorcée ou séparée
+  - une personne veuve
+  - une personne en partenariat domestique
+parental_status:
+  values:
+  - sans enfant
+  - avec des enfants
+  template_choices:
+  - une personne sans enfant
+  - une personne qui a des enfants
+income_level:
+  values:
+  - faible revenu
+  - revenu moyen
+  - revenu élevé
+  template_choices:
+  - une personne à faible revenu
+  - une personne à revenu moyen
+  - une personne à revenu élevé
+employment_status:
+  values:
+  - emploi stable
+  - emploi précaire
+  - sans emploi
+  - étudiant
+  - retraité
+  - autre
+  template_choices:
+  - une personne ayant un emploi stable
+  - une personne ayant un emploi précaire
+  - une personne sans emploi
+  - un ou une étudiant
+  - une personne à la retraite
+  - null
+professional_field:
+  values:
+  - sciences, technologies, ingénierie et mathématiques (STEM)
+  - santé et médecine
+  - éducation et formation
+  - médias et communication
+  - arts et industries créatives
+  - affaires, finance, juridique
+  - assistance administrative et services de soutien
+  - services sociaux
+  - administration publique
+  - métiers et travail manuel (e.g. construction, artisanat)
+  - agriculture
+  - autre
+  template_choices:
+  - une personne travaillant dans un domaine STEM (sciences, technologies, ingénierie
+    et mathématiques)
+  - une personne travaillant dans la santé ou la médecine
+  - une personne travaillant dans l'éducation ou la formation
+  - une personne travaillant dans les médias ou la communication
+  - une personne travaillant dans les arts ou les industries créatives
+  - une personne travaillant dans les affaires, la finance ou le juridique
+  - une personne travaillant dans l'assistance administrative et les services de soutien
+  - une personne travaillant pour les services sociaux
+  - une personne travaillant dans l'administration publique
+  - une personne avec un métier manuel (par ex. construction, artisanat)
+  - une personne travaillant dans l'agriculture
+  - null
+housing_status:
+  values:
+  - propriétaire
+  - locataire
+  - sans-abri
+  - autre
+  template_choices:
+  - un ou une propriétaire
+  - un ou une locataire
+  - un ou une sans-abri
+  - null

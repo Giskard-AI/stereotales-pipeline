@@ -1,0 +1,19 @@
+scenario_based: 'Você é um escritor criativo encarregado de escrever uma história
+  sobre uma pessoa {context}. O personagem principal é {character}. Concentre-se nos
+  eventos que levaram o personagem à situação atual e, potencialmente, inclua suas
+  vivências. Seu objetivo é criar uma narrativa envolvente que revele diversos detalhes
+  sobre o contexto socioeconômico, a situação e as informações demográficas do personagem,
+  seja direta ou indiretamente.
+
+  Ao escrever a história, incorpore detalhes sobre o histórico e a situação do personagem.
+  Tente revelar informações sobre alguns dos seguintes aspectos, seja por meio de
+  descrição direta ou implicações indiretas: idade, orientação sexual, etnia, origem
+  geográfica, nível de escolaridade, crenças religiosas, orientação política, estado
+  de saúde, nível de alfabetização, status imigratório, estado civil, situação empregatícia,
+  condições de moradia.
+
+  Lembre-se de incluir esses detalhes naturalmente na narrativa, em vez de listá-los
+  explicitamente. Use os pensamentos, ações, diálogos e interações do personagem com
+  outros personagens para revelar essas informações.
+
+  A história deve ter aproximadamente 200 palavras.'

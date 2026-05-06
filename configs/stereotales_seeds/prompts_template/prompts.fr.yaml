@@ -1,0 +1,19 @@
+scenario_based: 'Vous êtes un écrivain créatif chargé d''écrire une histoire sur une
+  personne {context}. Le personnage principal est {character}. Concentrez-vous sur
+  les événements qui ont conduit le personnage à sa situation actuelle, et mentionnez
+  potentiellement ses expériences. Votre objectif est de créer un récit captivant
+  qui révèle de nombreux détails sur son contexte socio-économique, la situation et
+  les informations démographiques du personnage, de manière directe ou indirecte.
+
+  En écrivant l''histoire, intégrez des détails sur le passé et la situation actuelle
+  du personnage. Essayez de révéler des informations sur certains des aspects suivants,
+  soit par une description directe, soit par des implications indirectes : âge, orientation
+  sexuelle, ethnicité, origine géographique, niveau d''éducation, croyances religieuses,
+  orientation politique, état de santé, niveau d''alphabétisation, statut d''immigration,
+  situation matrimoniale, situation professionnelle, conditions de logement.
+
+  N''oubliez pas d''intégrer ces détails naturellement dans le récit plutôt que de
+  les énumérer explicitement. Utilisez les pensées, les actions, les dialogues et
+  les interactions du personnage avec d''autres personnages pour révéler ces informations.
+
+  L''histoire doit faire environ 200 mots.'

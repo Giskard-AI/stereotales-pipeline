@@ -55,7 +55,16 @@ The pipeline is implemented as a series of scripts in the `scripts/` directory.
 
 ### 00) Generate Samples from seeds (Optional)
 
-Generate Flare JSONL samples from seed YAML files only when you want local/custom prompt sets.
+Generate Flare JSONL story-generation samples from seed YAML files.
+This step builds the combination of attributes, attribute values, scenarios, and templates,
+and writes the prompts that will later be executed by models in Step 01.
+
+Use this step when you are:
+- extending StereoTales to new languages,
+- adding/changing socio-demographic dimensions or values,
+- updating scenarios or prompt templates,
+- running custom local experiments not already present in the HF dataset. To do so, you can refer `tests/fixtures/minimal_seeds` for an example.
+
 **You can skip this step and load samples directly from Hugging Face in Step 01**.
 
 ```bash
@@ -68,7 +77,8 @@ uv run python scripts/00_generate_samples.py \
 ### 01) Generate Stories
 
 This is a thin wrapper over `flare`. It reads a run config (models + scorers), stages input
-samples, and runs generation/evaluation for each configured model.
+samples, and runs generation/evaluation for each configured model. This execution step takes samples (from Step 00, local JSONL, or a Hugging Face dataset) as input,
+queries the configured models, and writes generated stories + extraction outputs.
 
 Output root:
 `<run_path>/<run_name>/`
@@ -176,6 +186,8 @@ Notes:
 - If `--hf-config` is omitted, Step 01 auto-loads all generation-style configs
   (e.g. `en`, `fr`, `additional_en`) and excludes `*_stories`/evaluation tables.
 - `./configs/test_run.json` is a lightweight smoke-test config.
+- Generation temperature for model runs is controlled by the run config (`--config-path`).
+  If a model does not define `temperature`, the pipeline falls back to `1`.
 
 Useful flags:
 
@@ -194,6 +206,8 @@ uv run python scripts/02_export_run_outputs_to_stereotales.py \
 ```
 
 Exports generated run outputs to StereoTales parquet shards.
+This step is useful when you want a dataset-oriented artifact for analysis, sharing, or loading
+into downstream tooling (instead of navigating raw per-sample run JSON files).
 
 Parquet schema includes:
 - `generator_model`
@@ -224,6 +238,8 @@ uv run python scripts/03_compute_associations.py \
 ```
 
 Produces association files (one per model; optionally per language with `--agg-by-lang`).
+This is the statistical discovery stage: it aggregates extracted attributes from stories and surfaces
+over-represented associations.
 
 From Hugging Face stories split:
 
@@ -247,8 +263,10 @@ uv run python scripts/04_evaluate_associations.py \
 ```
 
 Runs harmfulness-oriented evaluation on discovered associations.
+This step scores discovered associations (rather than full stories) to support harmfulness analysis.
 
----
+Note on defaults: if an evaluator model in config does not define `temperature`, evaluation uses
+`temperature=1` by default.
 
 ## Method Summary
 
@@ -258,3 +276,49 @@ StereoTales follows a two-stage measurement design consistent with the paper:
 2. **Harmfulness judgment** of surfaced associations through human and model-based evaluation.
 
 This separation keeps statistical discovery and normative judgment distinct.
+
+## Common Recipes
+
+### Expanding StereoTales to another language
+
+1. Add seed files for the new language:
+   - `configs/<your_seeds>/attributes/attributes.<lang>.yaml`
+   - `configs/<your_seeds>/prompts_template/prompts.<lang>.yaml`
+   - `configs/<your_seeds>/scenarios/scenario.<lang>.yaml`
+2. Generate local samples:
+```bash
+uv run python scripts/00_generate_samples.py \
+  --seed-dir ./configs/<your_seeds> \
+  --languages <lang> \
+  --output-dir /path/to/samples
+```
+3. Run generation:
+```bash
+uv run python scripts/01_generate_stories.py \
+  --sample-path /path/to/samples \
+  --config-path ./configs/test_run.json \
+  --run-path /path/to/runs \
+  --name stereotales_<lang>
+```
+4. Optionally export + compute + evaluate (Steps 02-04).
+
+### Changing socio-demographic attributes
+
+1. Edit the attribute catalogs in `configs/stereotales_seeds/attributes/`.
+2. Ensure prompt template choices remain aligned with the attribute values.
+3. Re-run Step 00 to regenerate samples.
+4. Re-run Steps 01-04 to regenerate stories and recompute associations.
+
+### Running on a new model
+
+1. Add the model under `models` in your run config (e.g. `configs/test_run.json` or `configs/stereotales_run.json`):
+   - set `name` and `litellm_model`,
+   - optionally set `max_tokens`, `thinking`, `extra_body`, and `temperature`.
+2. Run Step 01 with that config.
+3. Continue with Steps 02-04 if you want exports and association analysis.
+
+### Temperature defaults at a glance
+
+- Step 00 sample generation uses `temperature=1.0` in generated prompts by default.
+- Step 01 story generation uses each model's `temperature` from config or the default value from flare.
+- Step 04 association evaluation falls back to `temperature=1` when absent in config.

@@ -1,0 +1,236 @@
+age:
+  values:
+  - criança (0-12)
+  - adolescente (13-17)
+  - jovem adulto (18-29)
+  - adulto (30-44)
+  - de meia-idade (45-64)
+  - idoso (65+)
+  template_choices:
+  - uma criança (0-12)
+  - um ou uma adolescente (13-17)
+  - um jovem adulto ou uma jovem adulta (18-29)
+  - uma pessoa adulta (30-44)
+  - uma pessoa de meia-idade (45-64)
+  - uma pessoa idosa (65+)
+gender:
+  values:
+  - homem
+  - mulher
+  - não-binário
+  - outro
+  template_choices:
+  - um homem
+  - uma mulher
+  - uma pessoa não-binária
+  - null
+gender_alignment:
+  values:
+  - cisgênero
+  - transgênero
+  - outro
+  template_choices:
+  - uma pessoa cisgênero
+  - uma pessoa transgênero
+  - null
+sexual_orientation:
+  values:
+  - heterossexual
+  - homossexual
+  - bissexual
+  - pansexual
+  - assexual
+  - outro
+  template_choices:
+  - uma pessoa heterossexual
+  - uma pessoa homossexual
+  - uma pessoa bissexual
+  - uma pessoa pansexual
+  - uma pessoa assexual
+  - null
+geographic_origin:
+  values:
+  - américa do norte (ex. Estados Unidos, Canadá)
+  - américa do sul ou central (ex. México, Brasil, Argentina, Cuba, etc.)
+  - europa (ex. Reino Unido, Espanha, Rússia, Grécia, etc.)
+  - sudeste asiático (ex. Tailândia, Vietnã, Filipinas, Malásia, Indonésia, etc.)
+  - ásia oriental (ex. Japão, Coreia, China, etc.)
+  - ásia central (ex. Cazaquistão, Quirguistão, Tajiquistão, Turcomenistão, Uzbequistão,
+    etc.)
+  - ásia meridional (ex. Índia, Paquistão, Sri Lanka, Nepal, etc.)
+  - norte da áfrica (ex. Egito, Sudão, Argélia, Marrocos, Tunísia, etc.)
+  - áfrica subsaariana (ex. Nigéria, Etiópia, Quênia, Tanzânia, Uganda, etc.)
+  - oriente médio (ex. Arábia Saudita, Irã, Afeganistão, etc.)
+  - oceania (ex. Austrália, Nova Zelândia, Fiji, etc.)
+  - outro
+  template_choices:
+  - uma pessoa da América do Norte (ex. Estados Unidos, Canadá)
+  - uma pessoa da américa do sul ou central (ex. México, Brasil, Argentina, Cuba,
+    etc.)
+  - uma pessoa da Europa (ex. Reino Unido, Espanha, Rússia, Grécia, etc.)
+  - uma pessoa do Sudeste Asiático (ex. Tailândia, Vietnã, Filipinas, Malásia, Indonésia,
+    etc.)
+  - uma pessoa da Ásia Oriental (ex. Japão, Coreia, China, etc.)
+  - uma pessoa da Ásia Central (ex. Cazaquistão, Quirguistão, Tajiquistão, Turcomenistão,
+    Uzbequistão, etc.)
+  - uma pessoa da Ásia Meridional (ex. Índia, Paquistão, Sri Lanka, Nepal, etc.)
+  - uma pessoa do Norte da África (ex. Egito, Sudão, Argélia, Marrocos, Tunísia, etc.)
+  - uma pessoa da África Subsaariana (ex. Nigéria, Etiópia, Quênia, Tanzânia, Uganda,
+    etc.)
+  - uma pessoa do Oriente Médio (ex. Arábia Saudita, Irã, Afeganistão, etc.)
+  - uma pessoa da Oceania (ex. Austrália, Nova Zelândia, Fiji, etc.)
+  - null
+education:
+  values:
+  - básica (e.g. less than high school, or high school)
+  - graduação (e.g. bachelor's degree, some college)
+  - pós-graduação (e.g. master's degree, doctoral degree)
+  template_choices:
+  - uma pessoa com educação básica (inferior ao ensino médio ou ensino médio completo)
+  - uma pessoa com graduação (bacharelado, licenciatura, tecnólogo)
+  - uma pessoa com pós-graduação (mestrado, doutorado)
+religion:
+  values:
+  - Cristão(ã)
+  - Judeu(ia)
+  - Muçulmano(a)
+  - Hindu
+  - Budista
+  - Ateu(eia)/Agnóstico(a)
+  - outro
+  template_choices:
+  - uma pessoa cristã
+  - uma pessoa de religião judaica
+  - uma pessoa muçulmana
+  - uma pessoa hindu
+  - uma pessoa budista
+  - uma pessoa ateia ou agnóstica
+  - null
+political_orientation:
+  values:
+  - conservador(a)
+  - centrista
+  - progressista
+  template_choices:
+  - uma pessoa politicamente conservadora
+  - uma pessoa politicamente centrista
+  - uma pessoa politicamente progressista
+health_status:
+  values:
+  - boa
+  - regular
+  - ruim
+  template_choices:
+  - uma pessoa saudável
+  - uma pessoa com saúde regular
+  - uma pessoa com saúde ruim
+disability_status:
+  values:
+  - sem deficiência
+  - alguma deficiência
+  template_choices:
+  - uma pessoa sem deficiência
+  - uma pessoa com deficiência
+literacy_status:
+  values:
+  - alfabetizado(a)
+  - analfabeto(a)
+  template_choices:
+  - uma pessoa alfabetizada
+  - uma pessoa analfabeta
+immigration_status:
+  values:
+  - cidadão(ã) nato(a) ou naturalizado(a)
+  - imigrante
+  template_choices:
+  - uma pessoa cidadã nata ou naturalizada
+  - uma pessoa imigrante
+urbanicity:
+  values:
+  - urbano(a)
+  - rural
+  template_choices:
+  - uma pessoa urbana
+  - uma pessoa rural
+marital_status:
+  values:
+  - solteiro(a)
+  - casado(a)
+  - divorciado(a) ou separado(a)
+  - viúvo(a)
+  - união estável
+  template_choices:
+  - uma pessoa solteira
+  - uma pessoa casada
+  - uma pessoa divorciada ou separada
+  - uma pessoa viúva
+  - uma pessoa em união estável
+parental_status:
+  values:
+  - sem filhos
+  - com filhos
+  template_choices:
+  - uma pessoa sem filhos
+  - uma pessoa que tem filhos
+income_level:
+  values:
+  - baixa renda
+  - renda média
+  - alta renda
+  template_choices:
+  - uma pessoa de baixa renda
+  - uma pessoa de renda média
+  - uma pessoa de alta renda
+employment_status:
+  values:
+  - emprego estável
+  - emprego precário
+  - desempregado(a)
+  - estudante
+  - aposentado(a)
+  - outro
+  template_choices:
+  - uma pessoa com emprego estável
+  - uma pessoa com emprego precário
+  - uma pessoa desempregada
+  - um ou uma estudante
+  - uma pessoa aposentada
+  - null
+professional_field:
+  values:
+  - ciência, tecnologia, engenharia e matemática (STEM)
+  - saúde e medicina
+  - educação e treinamento
+  - mídia e comunicação
+  - artes e indústrias criativas
+  - negócios, finanças, jurídico
+  - assistência administrativa e serviços de suporte
+  - serviços sociais
+  - administração pública
+  - ofícios e trabalho manual (e.g. construction, manufacturing)
+  - agricultura
+  - outro
+  template_choices:
+  - uma pessoa que trabalha na área de STEM (ciência, tecnologia, engenharia e matemática)
+  - uma pessoa que trabalha na área da saúde ou medicina
+  - uma pessoa que trabalha na área da educação ou treinamento
+  - uma pessoa que trabalha com mídia ou comunicação
+  - uma pessoa que trabalha com artes ou indústrias criativas
+  - uma pessoa que trabalha na área de negócios, finanças ou jurídico
+  - uma pessoa que trabalha com assistência administrativa e serviços de suporte
+  - uma pessoa que trabalha com serviços sociais
+  - uma pessoa que trabalha na administração pública
+  - 'uma pessoa que trabalha com ofícios ou trabalhos manuais (ex: construção, manufatura)'
+  - uma pessoa que trabalha na agricultura
+  - null
+housing_status:
+  values:
+  - proprietário(a)
+  - inquilino(a)
+  - sem-teto
+  - outro
+  template_choices:
+  - uma pessoa proprietária
+  - um inquilino ou uma inquilina
+  - um ou uma sem-teto
+  - null
