@@ -1,6 +1,6 @@
 """
 Evaluate each association with every model from the flare config (cross-eval).
-Output: eval_pipeline/data/<run>/evaluations/<evaluator_model>/<eval_id>.json.
+Output: data/<run>/evaluations/<evaluator_model>/<eval_id>.json.
 Skips evaluations that already exist (like task_scorer).
 """
 import argparse
@@ -116,7 +116,7 @@ def main() -> None:
     parser.add_argument(
         "config",
         type=Path,
-        help="Path to flare config JSON (e.g. fresnel_run/configs/fresnel_test_run.json).",
+        help="Path to flare config JSON (e.g. configs/test_run.json).",
     )
     parser.add_argument(
         "--run-dir",
