@@ -1,6 +1,22 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
-  ]
+    "config:recommended",
+    ":dependencyDashboard",
+    "group:monorepos"
+  ],
+  "timezone": "Europe/Paris",
+  "schedule": [
+    "before 6am on monday"
+  ],
+  "minimumReleaseAge": "1 day",
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": [
+      "before 6am on monday"
+    ]
+  }
 }
